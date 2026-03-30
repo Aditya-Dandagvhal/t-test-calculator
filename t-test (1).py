@@ -237,6 +237,7 @@ HEADER_FONT = ("Georgia", 18, "bold")
 LABEL_FONT  = ("Segoe UI", 10)
 SMALL_FONT  = ("Segoe UI", 9)
 
+import tkinter as tk
 
 class TTestApp(tk.Tk):
     def __init__(self):
@@ -257,13 +258,24 @@ class TTestApp(tk.Tk):
                      relief="flat", bd=0, highlightthickness=1,
                      highlightbackground=BORDER, highlightcolor=ACCENT)
         return e
-
     def _btn(self, parent, text, cmd, color=ACCENT):
         b = tk.Button(parent, text=text, command=cmd,
                       font=("Segoe UI", 10, "bold"),
-                      bg=color, fg="Red", activebackground=ACCENT2,
-                      activeforeground="white", relief="flat",
-                      padx=18, pady=6, cursor="hand2", bd=0)
+                      bg=color, fg="white",
+                      activebackground=ACCENT2,
+                      activeforeground="white",
+                      relief="flat",
+                      padx=18, pady=6,
+                      cursor="hand2", bd=0)
+        def on_enter(e):
+            b.config(bg=ACCENT2)
+
+        def on_leave(e):
+            b.config(bg=color)
+
+        b.bind("<Enter>", on_enter)
+        b.bind("<Leave>", on_leave)
+
         return b
 
     def _sep(self, parent):
