@@ -514,7 +514,7 @@ class TTestApp(tk.Tk):
             if hasattr(self, attr):
                 getattr(self, attr).delete(0, "end")
         self._show_welcome()
-
+# --- t-Critical value reference table popup ---
     def _show_table(self):
         win = tk.Toplevel(self)
         win.title("t-Critical Value Reference Table")
