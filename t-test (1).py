@@ -357,7 +357,7 @@ class TTestApp(tk.Tk):
 
         # Quick ref t-table button
         self._btn(parent, "📋  View t-Critical Table", self._show_table,
-                  color="#2c3e50").pack(pady=6, fill="x")
+                  color="#36597d").pack(pady=6, fill="x")
 
     def _build_one_sample_inputs(self):
         for w in self.dyn.winfo_children():
