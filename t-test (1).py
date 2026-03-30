@@ -438,7 +438,7 @@ class TTestApp(tk.Tk):
 
     def _show_welcome(self):
         msg = (
-            "Welcome to the T-Test Calculator!\n\n"
+            "Welcome to the Small Sampling T-Test Calculator!\n\n"
             "Steps:\n"
             "  1. Choose Test Type (One-Sample / Two-Sample / Paired)\n"
             "  2. Enter your data values\n"
