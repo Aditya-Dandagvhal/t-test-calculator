@@ -1,5 +1,5 @@
 """
-Small Sampling T-Test Calculator
+Small Sampling T-Test Analyzer
 A GUI application for solving small sampling t-tests.
 Maths Mini Project - Group of 6 Members
 """
