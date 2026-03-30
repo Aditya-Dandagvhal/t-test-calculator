@@ -9,9 +9,9 @@ from tkinter import ttk, messagebox, scrolledtext
 import math
 import statistics
 
-# ─────────────────────────────────────────────
+# ───────────────────────────────────────────
 #  MATH CORE
-# ─────────────────────────────────────────────
+# ───────────────────────────────────────────
 
 def t_critical_value(df, alpha, two_tailed=True):
     """
