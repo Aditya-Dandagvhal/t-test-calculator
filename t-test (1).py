@@ -237,8 +237,6 @@ HEADER_FONT = ("Georgia", 18, "bold")
 LABEL_FONT  = ("Segoe UI", 10)
 SMALL_FONT  = ("Segoe UI", 9)
 
-import tkinter as tk
-
 class TTestApp(tk.Tk):
     def __init__(self):
         super().__init__()
@@ -251,36 +249,43 @@ class TTestApp(tk.Tk):
     # ── helpers ──────────────────────────────
     def _lbl(self, parent, text, font=LABEL_FONT, fg=TEXT, **kw):
         return tk.Label(parent, text=text, font=font, fg=fg, bg=parent["bg"], **kw)
-
-    def _entry(self, parent, width=30):
+    def _entry(self, parent, width=30, placeholder=""):
         e = tk.Entry(parent, width=width, font=MONO,
-                     bg=ENTRY_BG, fg=TEXT, insertbackground=ACCENT,
+                     bg=ENTRY_BG, fg="grey",
+                     insertbackground=ACCENT,
                      relief="flat", bd=0, highlightthickness=1,
-                     highlightbackground=BORDER, highlightcolor=ACCENT)
+                     highlightbackground=BORDER,
+                     highlightcolor=ACCENT)
+        e.insert(0, placeholder)
+
+        def on_focus_in(event):
+            if e.get() == placeholder:
+                e.delete(0, tk.END)
+                e.config(fg=TEXT)
+
+        def on_focus_out(event):
+            if not e.get():
+                e.insert(0, placeholder)
+                e.config(fg="grey")
+
+        e.bind("<FocusIn>", on_focus_in)
+        e.bind("<FocusOut>", on_focus_out)
+
         return e
+
     def _btn(self, parent, text, cmd, color=ACCENT):
-        b = tk.Button(parent, text=text, command=cmd,
-                      font=("Segoe UI", 10, "bold"),
-                      bg=color, fg="white",
-                      activebackground=ACCENT2,
-                      activeforeground="white",
-                      relief="flat",
-                      padx=18, pady=6,
-                      cursor="hand2", bd=0)
-        def on_enter(e):
-            b.config(bg=ACCENT2)
-
-        def on_leave(e):
-            b.config(bg=color)
-
-        b.bind("<Enter>", on_enter)
-        b.bind("<Leave>", on_leave)
-
-        return b
+        return tk.Button(parent, text=text, command=cmd,
+                         font=("Segoe UI", 10, "bold"),
+                         bg=color, fg="white",
+                         activebackground=ACCENT2,
+                         activeforeground="white",
+                         relief="flat",
+                         padx=18, pady=6,
+                         cursor="hand2", bd=0)
 
     def _sep(self, parent):
         f = tk.Frame(parent, bg=BORDER, height=1)
-        f.pack(fill="x", pady=8)
+        f.pack(fill="x", pady=8))
 
     # ── main layout ──────────────────────────
     def _build_ui(self):
