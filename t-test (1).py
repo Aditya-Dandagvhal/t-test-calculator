@@ -1,7 +1,7 @@
 """
 Small Sampling T-Test Analyzer
 A GUI application for solving small sampling t-tests.
-Maths Mini Project - Group of 6 Members
+Maths Mini Project of 6 Engineering Students
 """
 
 import tkinter as tk
