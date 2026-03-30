@@ -261,7 +261,7 @@ class TTestApp(tk.Tk):
     def _btn(self, parent, text, cmd, color=ACCENT):
         b = tk.Button(parent, text=text, command=cmd,
                       font=("Segoe UI", 10, "bold"),
-                      bg=color, fg="white", activebackground=ACCENT2,
+                      bg=color, fg="Red", activebackground=ACCENT2,
                       activeforeground="white", relief="flat",
                       padx=18, pady=6, cursor="hand2", bd=0)
         return b
@@ -423,16 +423,16 @@ class TTestApp(tk.Tk):
         self._sep(parent)
 
         self.result_box = scrolledtext.ScrolledText(
-            parent, font=("Courier New", 10), bg=ENTRY_BG, fg=TEXT,
+            parent, font=("Courier New", 18), bg=ENTRY_BG, fg=TEXT,
             relief="flat", bd=0, state="disabled",
             wrap="word", highlightthickness=1,
             highlightbackground=BORDER
         )
         self.result_box.pack(fill="both", expand=True)
-        self.result_box.tag_config("reject",  foreground=DANGER,  font=("Courier New", 10, "bold"))
-        self.result_box.tag_config("accept",  foreground=SUCCESS, font=("Courier New", 10, "bold"))
-        self.result_box.tag_config("header",  foreground=ACCENT,  font=("Courier New", 10, "bold"))
-        self.result_box.tag_config("formula", foreground=ACCENT2)
+        self.result_box.tag_config("reject",  foreground=DANGER,  font=("Courier New", 18, "bold"))
+        self.result_box.tag_config("accept",  foreground=SUCCESS, font=("Courier New", 18, "bold"))
+        self.result_box.tag_config("header",  foreground=ACCENT,  font=("Courier New", 18, "bold"))
+        self.result_box.tag_config("formula", foreground=ACCENT2, font=("Courier New", 17))
 
         self._show_welcome()
 
@@ -492,7 +492,7 @@ class TTestApp(tk.Tk):
             messagebox.showerror("Error", f"Unexpected error:\n{e}")
 
     def _write_output(self, text, rejected=None):
-        self.result_box.configure(state="normal")
+        self.result_box.configure(state="normal", font=("Courier New", 18))
         self.result_box.delete("1.0", "end")
         self.result_box.insert("end", text)
         # color the DECISION line
