@@ -508,7 +508,7 @@ class TTestApp(tk.Tk):
                 self.result_box.tag_add("accept", pos, line_end)
             start = line_end
         self.result_box.configure(state="disabled")
-
+# --- UI reset helpers ---
     def _clear(self):
         for attr in ("data1", "data2", "mu_entry"):
             if hasattr(self, attr):
