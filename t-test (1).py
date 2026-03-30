@@ -222,7 +222,7 @@ def format_paired(r):
 #  GUI
 # ─────────────────────────────────────────────
 
-DARK_BG     = "#0f1117"
+DARK_BG     = "#080630"
 PANEL_BG    = "#1a1d27"
 ACCENT      = "#4f8ef7"
 ACCENT2     = "#7c5cbf"
