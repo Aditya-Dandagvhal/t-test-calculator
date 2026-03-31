@@ -51,12 +51,23 @@ def t_critical_value(df, alpha, two_tailed=True):
         29: {0.10: 1.699, 0.05: 2.045,  0.02: 2.462,  0.01: 2.756},
         30: {0.10: 1.697, 0.05: 2.042,  0.02: 2.457,  0.01: 2.750},
     }
-    alpha_key = alpha if two_tailed else alpha * 2
-    # clamp df to table range
-    df_key = min(max(df, 1), 30)
-    # find nearest available alpha
+    adjusted_alpha = alpha if two_tailed else alpha * 2
+
+    # Validate and normalize degrees of freedom
+    try:
+        df_key = int(df)
+    except:
+        df_key = 1
+
+    # Ensure df stays within valid range
+    if df_key < 1:
+        df_key = 1
+    elif df_key > 30:
+        df_key = 30
+
+    # Extract available alpha levels
     avail = list(t_table[df_key].keys())
-    closest_alpha = min(avail, key=lambda a: abs(a - alpha_key))
+    closest_alpha = min(avail, key=lambda a: abs(a - adjusted_alpha))
     return t_table[df_key][closest_alpha]
 
 
